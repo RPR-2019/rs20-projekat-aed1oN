@@ -1,0 +1,22 @@
+.flatField {
+    -fx-background-color: transparent;
+    -fx-border-color: #fdd000;
+    -fx-border-width: 0 0 2px 0;
+    -fx-text-fill: white;
+}
+
+.flatButton {
+    -fx-background-color: transparent;
+}
+
+.flatButton:hover {
+    -fx-background-color: #fdd000;
+}
+.flatButton:hover FontAwesomeIcon {
+    -fx-fill: #000;
+}
+
+#logInButton {
+    -fx-background-color: #fdd000;
+
+}
