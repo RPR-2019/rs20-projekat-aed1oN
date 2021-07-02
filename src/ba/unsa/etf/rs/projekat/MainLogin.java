@@ -17,12 +17,13 @@ public class MainLogin extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        UsersDAO users = new UsersDAO();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainLogin.fxml"));
-        loader.setController(new MainLoginController());
+        loader.setController(new MainLoginController(users));
         Parent root = loader.load();
         primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.UNDECORATED);
-      root.setOnMousePressed(new EventHandler<MouseEvent>() {
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 xOffset = mouseEvent.getSceneX();
@@ -39,7 +40,6 @@ public class MainLogin extends Application {
         primaryStage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);
