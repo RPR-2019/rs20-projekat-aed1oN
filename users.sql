@@ -1,5 +1,5 @@
 BEGIN TRANSACTION;
-CREATE TABLE IF NOT EXISTS "user" (
+CREATE TABLE IF NOT EXISTS "login" (
 	"id"	INTEGER,
 	"name"	TEXT,
 	"surname"	TEXT,

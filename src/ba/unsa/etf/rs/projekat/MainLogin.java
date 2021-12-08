@@ -17,12 +17,11 @@ public class MainLogin extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        UsersDAO users = new UsersDAO();
+        HotelDAO users = new HotelDAO();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainLogin.fxml"));
         loader.setController(new MainLoginController(users));
         Parent root = loader.load();
         primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {

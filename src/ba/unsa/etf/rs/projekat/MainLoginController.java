@@ -3,13 +3,12 @@ package ba.unsa.etf.rs.projekat;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainLoginController {
 
-    private UsersDAO users;
+    private HotelDAO users;
 
     public Button closeButton;
     public Button loginButton;
@@ -17,7 +16,7 @@ public class MainLoginController {
     public PasswordField fldPassword;
     public Label wrongLabel;
 
-    public MainLoginController(UsersDAO users) {
+    public MainLoginController(HotelDAO users) {
         this.users = users;
     }
 

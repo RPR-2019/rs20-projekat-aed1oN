@@ -5,28 +5,28 @@ import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.Scanner;
 
-public class UsersDAO {
+public class HotelDAO {
 
     private Connection conn;
     private PreparedStatement getUsers, findUserQuery;
 
 
 
-    public UsersDAO() {
+    public HotelDAO() {
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:users.db");
-            getUsers = conn.prepareStatement("SELECT * FROM user");
+            conn = DriverManager.getConnection("jdbc:sqlite:hotel.db");
+            getUsers = conn.prepareStatement("SELECT * FROM login_information");
         } catch (SQLException throwables) {
             regenerateDatabase();
             try {
-                getUsers = conn.prepareStatement("SELECT * FROM user");
+                getUsers = conn.prepareStatement("SELECT * FROM login_information");
             } catch (SQLException e) {
                 System.out.println("PROVJERI BAZU!");
                 e.printStackTrace();
             }
         }
         try {
-            findUserQuery = conn.prepareStatement("SELECT * FROM user WHERE username = ? AND password = ?");
+            findUserQuery = conn.prepareStatement("SELECT * FROM login_information WHERE username = ? AND password = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }

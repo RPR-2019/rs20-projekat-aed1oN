@@ -2,51 +2,96 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
       <URL value="@/css/mainLogin.css" />
    </stylesheets>
 
-   <left>
-      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #fdd000;" BorderPane.alignment="CENTER">
+
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane prefHeight="378.0" prefWidth="300.0" style="-fx-background-color: #fdd000;" GridPane.rowSpan="3">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <FontAwesomeIcon glyphName="HOTEL" layoutX="138.0" layoutY="184.0" size="65" />
-            <Text fontSmoothingType="LCD" layoutX="60.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Balkan">
+            <FontAwesomeIcon glyphName="BED" size="5em" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+            <Label text="Hotel Balkan" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <font>
-                  <Font name="Book Antiqua" size="40.0" />
+                  <Font name="System Bold" size="40.0" />
                </font>
-            </Text>
-         </children></AnchorPane>
-   </left>
-   <center>
-      <AnchorPane prefHeight="482.0" prefWidth="352.0" style="-fx-background-color: #000;" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="fldUsername" layoutX="118.0" layoutY="206.0" promptText="Username" styleClass="flatField" />
-            <PasswordField fx:id="fldPassword" layoutX="118.0" layoutY="251.0" promptText="Password" styleClass="flatField" />
-            <Button fx:id="loginButton" layoutX="135.0" layoutY="346.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="35.0" prefWidth="80.0" text="Login" />
-            <Button fx:id="closeButton" layoutX="310.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeAction" styleClass="flatButton">
-               <graphic>
-                  <FontAwesomeIcon fill="#fdd000" glyphName="CLOSE" size="15" />
-               </graphic></Button>
-            <FontAwesomeIcon fill="#fdd000" glyphName="USER" layoutX="83.0" layoutY="225.0" size="20" />
-            <FontAwesomeIcon fill="#fdd000" glyphName="KEY" layoutX="81.0" layoutY="270.0" size="20" />
-            <Text fill="#fdd000" layoutX="100.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </Text>
-            <FontAwesomeIcon fill="#fdd000" glyphName="USERS" layoutX="148.0" layoutY="100.0" size="50" />
-            <Label fx:id="wrongLabel" layoutX="95.0" layoutY="304.0" textFill="RED" />
+            </Label>
          </children>
-      </AnchorPane>
-   </center>
-</BorderPane>
+      </GridPane>
+      <GridPane style="-fx-background-color: #000;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="3">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.20001220703125" minWidth="10.0" prefWidth="59.19996337890625" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.60003662109375" minWidth="10.0" prefWidth="241.60003662109375" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="wrongLabel" text="Wrong username or passoword" textFill="RED" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <FontAwesomeIcon fill="#fdd000" glyphName="USERS" size="3em" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+            <Label text="User Login" textFill="#fdd000" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fldUsername" prefHeight="26.0" prefWidth="165.0" styleClass="flatField" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="45.0" />
+               </GridPane.margin>
+            </TextField>
+            <PasswordField fx:id="fldPassword" styleClass="flatField" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets right="45.0" />
+               </GridPane.margin>
+            </PasswordField>
+            <Button mnemonicParsing="false" onAction="#loginAction" style="-fx-background-color: #fdd000;" text="Login" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </Button>
+            <FontAwesomeIcon fill="#fdd000" glyphName="USER" size="2em" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="7.0" />
+               </GridPane.margin>
+            </FontAwesomeIcon>
+            <FontAwesomeIcon fill="#fdd000" glyphName="KEY" size="2em" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </FontAwesomeIcon>
+         </children>
+      </GridPane>
+   </children>
+</GridPane>
