@@ -1,11 +1,18 @@
 BEGIN TRANSACTION;
-CREATE TABLE IF NOT EXISTS "login" (
+CREATE TABLE IF NOT EXISTS "login_information" (
+	"id"	INTEGER,
+	"username"	TEXT,
+	"password"	TEXT
+);
+CREATE TABLE IF NOT EXISTS "users" (
 	"id"	INTEGER,
 	"name"	TEXT,
 	"surname"	TEXT,
 	"username"	TEXT,
 	"password"	TEXT,
-	PRIMARY KEY("id")
+	"login_information_id"	INTEGER,
+	PRIMARY KEY("id"),
+	FOREIGN KEY("login_information_id") REFERENCES "login_information"
 );
-INSERT INTO "user" VALUES (1,'Meho','Mehic ','mmehic1','test');
+INSERT INTO "login_information" VALUES (1,'mmehic1','test');
 COMMIT;

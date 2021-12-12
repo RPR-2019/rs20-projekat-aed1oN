@@ -59,7 +59,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label fx:id="wrongLabel" text="Wrong username or passoword" textFill="RED" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Label fx:id="wrongLabel" text="" textFill="RED" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <FontAwesomeIcon fill="#fdd000" glyphName="USERS" size="3em" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
             <Label text="User Login" textFill="#fdd000" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>

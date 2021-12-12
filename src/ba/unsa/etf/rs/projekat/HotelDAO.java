@@ -7,26 +7,31 @@ import java.util.Scanner;
 
 public class HotelDAO {
 
+    private User user;
+
+
     private Connection conn;
-    private PreparedStatement getUsers, findUserQuery;
+    private PreparedStatement getUsersInformation, findUserInformationQuery, findUserQuery;
 
 
 
     public HotelDAO() {
         try {
+            user = new User();
             conn = DriverManager.getConnection("jdbc:sqlite:hotel.db");
-            getUsers = conn.prepareStatement("SELECT * FROM login_information");
+            getUsersInformation = conn.prepareStatement("SELECT * FROM login_information");
         } catch (SQLException throwables) {
             regenerateDatabase();
             try {
-                getUsers = conn.prepareStatement("SELECT * FROM login_information");
+                getUsersInformation = conn.prepareStatement("SELECT * FROM login_information");
             } catch (SQLException e) {
                 System.out.println("PROVJERI BAZU!");
                 e.printStackTrace();
             }
         }
         try {
-            findUserQuery = conn.prepareStatement("SELECT * FROM login_information WHERE username = ? AND password = ?");
+            findUserInformationQuery = conn.prepareStatement("SELECT * FROM login_information WHERE username = ? AND password = ?");
+            findUserQuery = conn.prepareStatement("SELECT * FROM users WHERE login_information_id = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -35,7 +40,7 @@ public class HotelDAO {
 
     private void regenerateDatabase() {
         try {
-            Scanner input = new Scanner(new FileInputStream("users.sql"));
+            Scanner input = new Scanner(new FileInputStream("hotel.sql"));
             String sqlQuery = "";
             while (input.hasNext())  {
                 sqlQuery += input.nextLine();
@@ -53,10 +58,17 @@ public class HotelDAO {
 
     public boolean validateUser(String username, String password) {
         try {
-            findUserQuery.setString(1, username);
-            findUserQuery.setString(2, password);
-            ResultSet rs = findUserQuery.executeQuery();
-            if (!rs.next()) return false;
+            findUserInformationQuery.setString(1, username);
+            findUserInformationQuery.setString(2, password);
+            ResultSet rsUserInformation = findUserInformationQuery.executeQuery();
+            if (!rsUserInformation.next()) {
+                user  = null;
+                return false;
+            }
+            findUserQuery.setInt(1, rsUserInformation.getInt(1));
+            ResultSet rsUser = findUserQuery.executeQuery();
+            user = new User(rsUser.getInt(1), rsUser.getString(2), rsUser.getString(3),
+                    rsUser.getString(4), rsUser.getString(5));
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -64,4 +76,11 @@ public class HotelDAO {
         }
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
